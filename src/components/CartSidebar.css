@@ -1,0 +1,67 @@
+/* === Sidebar del carrito === */
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: -400px; /* oculto por defecto */
+  width: 350px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+  transition: right 0.4s ease;
+  padding: 20px;
+  overflow-y: auto;
+  z-index: 1001;
+}
+
+.cart-sidebar.open {
+  right: 0; /* visible */
+}
+
+/* === Botón de cerrar === */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  border: none;
+  background: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* === Fondo oscuro detrás === */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+/* === Mejoras visuales para el contenido del carrito === */
+.cart-sidebar h1,
+.cart-sidebar h2,
+.cart-sidebar h3 {
+  margin: 10px 0;
+}
+
+.cart-sidebar img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.cart-sidebar button {
+  margin-top: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.cart-sidebar button:hover {
+  background-color: #0056b3;
+}

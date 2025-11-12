@@ -1,0 +1,34 @@
+.cart-container {
+  display: flex;
+  width: 10%;
+}
+
+.cart-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: filter 300ms;
+}
+
+.cart-img {
+  width: 100%;
+  height: 40px;
+}
+
+.cart.show {
+	right: 0;
+}
+
+.cart-btn:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.cart-btn.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .cart-btn {
+    animation: logo-spin infinite 20s linear;
+  }
+}
