@@ -18,16 +18,16 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-async function getData(){
+async function getData() {
     const productsRef = collection(db, "products");
     const productsSnapshot = await getDocs(productsRef);
     const docs = productsSnapshot.docs;
     console.log(docs[0].data());
-    const dataDocs = docs.map( item => {
-        return { ...item.data(), id : item.id }
-    } );
+    const dataDocs = docs.map(item => {
+        return { ...item.data(), id: item.id }
+    });
     return dataDocs;
-    
+
 }
 export async function getProductById(idParam) {
     const docRef = doc(db, "products", idParam);
@@ -37,15 +37,15 @@ export async function getProductById(idParam) {
     return { ...docData, id: idDoc };
 }
 
-export async function getProductsByCategory (categParam) {
+export async function getProductsByCategory(categParam) {
     const productsRef = collection(db, "products");
     const q = query(productsRef, where("category", "==", categParam));
-    
+
     const productsSnapshot = await getDocs(q);
     const docs = productsSnapshot.docs;
-    const dataDocs = docs.map( item => {
-        return { ...item.data(), id : item.id }
-    } );
+    const dataDocs = docs.map(item => {
+        return { ...item.data(), id: item.id }
+    });
     return dataDocs
 }
 
@@ -53,10 +53,10 @@ export async function createBuyOrder(orderData) {
     const ordersRef = collection(db, "orders");
     const newDoc = await addDoc(ordersRef, orderData);
     return newDoc;
-    
+
 }
 
-export async function exportProducts(){
+export async function exportProducts() {
     const productsRef = collection(db, "products");
     for (let item of productos) {
         const newDoc = await addDoc(productsRef, item);

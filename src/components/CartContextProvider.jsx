@@ -5,10 +5,16 @@ import CartContext from './CartContext'
 export function CartContextProvider({ children }) {
   const [cartItems, setCartItems] = useState([])
 
-  function addItem(item) {
-    const newCartItems = structuredClone(cartItems)
-    newCartItems.push(item)
-    setCartItems(newCartItems)
+  function addItem(itemToAdd) {
+    const existingItemIndex = cartItems.findIndex(item => item.id === itemToAdd.id);
+
+    if (existingItemIndex !== -1) {
+      const updatedCart = [...cartItems];
+      updatedCart[existingItemIndex].quantity += itemToAdd.quantity || 1;
+      setCartItems(updatedCart);
+    } else {
+      setCartItems([...cartItems, { ...itemToAdd, quantity: itemToAdd.quantity || 1 }]);
+    }
   }
 
   function removeItem(id) {
@@ -29,17 +35,17 @@ export function CartContextProvider({ children }) {
   }
 
   return (
-  <CartContext.Provider
-    value={{
-      cart: cartItems,
-      addItem,
-      removeItem,
-      clearCart,
-      countItemsInCart,
-      getTotalPrice
-    }}
-  >
-    {children}
-  </CartContext.Provider>
-)
+    <CartContext.Provider
+      value={{
+        cart: cartItems,
+        addItem,
+        removeItem,
+        clearCart,
+        countItemsInCart,
+        getTotalPrice
+      }}
+    >
+      {children}
+    </CartContext.Provider>
+  )
 }

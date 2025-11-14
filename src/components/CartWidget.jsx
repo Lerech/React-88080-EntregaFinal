@@ -3,7 +3,7 @@ import CartContext from "./CartContext";
 
 function CartWidget({ onClick }) {
     const { countItemsInCart } = useContext(CartContext)
-    const totalItems = countItemsInCart()
+    const totalItems = countItemsInCart();
     return (
         <div className="cart-container">
             <button className="cart-btn" onClick={onClick}>
