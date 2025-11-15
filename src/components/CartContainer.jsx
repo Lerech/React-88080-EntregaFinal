@@ -2,21 +2,22 @@ import { useContext, useState } from "react";
 import CartContext from "./CartContext";
 import { createBuyOrder } from "../FireStoreService.js";
 import CheckoutForm from "./CheckoutForm";
+import Swal from 'sweetalert2'
 
 function CartContainer() {
-  const { cart, clearCart, removeItem } = useContext(CartContext);
+  const { cart, clearCart, removeItem, getTotalPrice } = useContext(CartContext);
   const [orderCreated, setOrderCreated] = useState(false);
 
   async function handleCheckout(formData) {
     const orderData = {
       buyer: formData,
       cart,
-      total: 999,
+      total: getTotalPrice(),
       date: new Date(),
     }
 
     const response = await createBuyOrder(orderData);
-    alert(`Gracias por tu compra! este es el id de tu orden de compra: ${response.id}`);
+    Swal.fire({icon: "success", text: `Gracias por tu compra! este es el id de tu orden de compra: ${response.id}`});
     setOrderCreated(response.id);
     clearCart();
   }
@@ -42,7 +43,7 @@ function CartContainer() {
     </div>
     <hr />
     <div>
-      Total de tu compra: $999
+      Total de tu compra: ${getTotalPrice()}
     </div>
 
     <CheckoutForm handleCheckout={handleCheckout} />

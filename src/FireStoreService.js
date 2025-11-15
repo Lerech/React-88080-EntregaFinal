@@ -1,5 +1,4 @@
 
-import productos from "./data.js";
 import { addDoc, getDoc, getFirestore, query, where } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 import { collection, getDocs, doc } from "firebase/firestore";
