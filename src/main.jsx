@@ -4,11 +4,9 @@ import './index.css'
 import App from './App.jsx'
 import './components/cart.css'
 import './components/NavBar.css'
-import './components/ItemListContainer.css'
-import './components/ItemDetailContainer.css'
-import './components/ItemDetail.css'
-import './components/Item.css'
-import './components/Checkout.css'
+import './components/CartSidebar.css'
+import './components/App.css'
+
 
 
 
