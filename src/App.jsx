@@ -5,7 +5,6 @@ import './components/cart.css'
 import './components/navbar.css'
 import Productos from "./components/Productos";
 import Contacto from "./components/Contacto";
-import Detalles from "./components/Detalles";
 import ItemDetailContainer from './components/itemDetailContainer'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CartContextProvider } from "./components/CartContextProvider";
