@@ -2,7 +2,7 @@ import './App.css'
 import ItemListContainer from './components/ItemListContainer'
 import NavBar from './components/NavBar'
 import './components/cart.css'
-import './components/navbar.css'
+import './components/NavBar.css'
 import Productos from "./components/Productos";
 import Contacto from "./components/Contacto";
 import ItemDetailContainer from './components/itemDetailContainer'
