@@ -1,5 +1,5 @@
 import CartWidget from "./CartWidget"
-import Logo from "./logo";
+import Logo from "./Logo";
 import './logo.css'
 import { Link } from "react-router-dom";
 
