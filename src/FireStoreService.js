@@ -5,12 +5,12 @@ import { collection, getDocs, doc } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 
 const firebaseConfig = {
-    apiKey: "AIzaSyC6pDEtcNiBH3QTsgl96lXeV-M2N9mVt6E",
-    authDomain: "react-88080-37ef8.firebaseapp.com",
-    projectId: "react-88080-37ef8",
-    storageBucket: "react-88080-37ef8.firebasestorage.app",
+    apiKey: import.meta.env.VITE_FS_APIKEY,
+    authDomain:  import.meta.env.VITE_FS_AUTH,
+    projectId:  import.meta.env.VITE_FS_PROJECTID,
+    storageBucket: import.meta.env.VITE_FS_BUCKET,
     messagingSenderId: "724281755751",
-    appId: "1:724281755751:web:319ab8ac2da9c7e62aecc2",
+    appId: import.meta.env.VITE_FS_APPID,
     measurementId: "G-D59KMNFPJE"
 };
 
@@ -57,6 +57,7 @@ export async function createBuyOrder(orderData) {
 
 export async function exportProducts() {
     const productsRef = collection(db, "products");
+    // eslint-disable-next-line no-undef
     for (let item of productos) {
         const newDoc = await addDoc(productsRef, item);
         console.log("Documento creado con id: ", newDoc.id);
