@@ -1,14 +1,14 @@
 import Item from "./Item";
 import { getProductsByCategory } from "../FireStoreService.js";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import getData from "../FireStoreService.js"
 function ItemListContainer(props) {
     console.log(getData);
     const [productos, setProductos] = useState([]);
     const { catParam } = useParams();
     useEffect(() => {
-        
+
         if (catParam) {
             getProductsByCategory(catParam).then(data => {
                 console.log("dato recibido", data);
@@ -25,7 +25,7 @@ function ItemListContainer(props) {
                 console.log("Error: ", error);
             });
         }
-    }, [catParam]); 
+    }, [catParam]);
 
     return (
         <div>

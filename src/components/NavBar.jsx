@@ -1,19 +1,17 @@
 import CartWidget from "./CartWidget"
 import Logo from "./logo";
 import './Logo.css'
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 function NavBar({ onCartClick }) {
   return (
     <nav className="navbar">
       <ul className="nav-links">
         <li className="nav-item"><Link to="/">Inicio</Link></li>
-        <li className="nav-item"><Link to="/category/productos">Productos</Link></li>
-        <li className="nav-item"><Link to="/category/contacto">Contacto</Link></li>
-        <li className="nav-item"><Link to="/category/detail">Detalles</Link></li>
+        <li className="nav-item"><Link to="./productos">Productos</Link></li>
+        <li className="nav-item"><Link to="./contacto">Contacto</Link></li>
       </ul>
 
-      {/* Boton del carrito */}
       <CartWidget onClick={onCartClick} />
 
       <Logo />

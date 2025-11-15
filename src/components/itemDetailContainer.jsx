@@ -1,13 +1,16 @@
 import { useState, useEffect, useContext } from "react"
-import { useParams } from "react-router"
+import { useParams } from "react-router-dom"
 import { getProductById } from "../FireStoreService.js"
 import { DotLoader } from "react-spinners"
-import cartContext from "./CartContext"
+import CartContext from "./CartContext"
+import ItemCount from "./ItemCount"
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function ItemDetailContainer() {
   const [itemData, setItemData] = useState({ loading: true })
   const { idParam } = useParams()
-  const { addItem } = useContext(cartContext)
+  const { addItem } = useContext(CartContext)
 
   useEffect(() => {
     getProductById(idParam).then((res) => setItemData(res))
@@ -21,16 +24,17 @@ function ItemDetailContainer() {
     )
   }
 
-  function handleAddToCart() {
+  function handleAddToCart(quantitySelected) {
     const itemToAdd = {
       id: itemData.id,
       title: itemData.name,
       price: itemData.price,
-      quantity: 1,
-      img: itemData.img
+      img: itemData.img,
+      quantity: quantitySelected,   
     }
+
     addItem(itemToAdd)
-    alert("Producto agregado al carrito!")
+    toast.success(`Agregaste ${quantitySelected} unidades al carrito!`)
   }
 
   return (
@@ -39,7 +43,12 @@ function ItemDetailContainer() {
       <h2>{itemData.name}</h2>
       <p>{itemData.description || "Descripción del producto"}</p>
       <p>Precio: ${itemData.price}</p>
-      <button onClick={handleAddToCart}>Agregar al carrito</button>
+
+      <ItemCount
+        stock={10}
+        initial={1}
+        onAdd={handleAddToCart}
+      />
     </div>
   )
 }

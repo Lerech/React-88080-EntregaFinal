@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import CartContext from './CartContext'
 
-
 export function CartContextProvider({ children }) {
   const [cartItems, setCartItems] = useState([])
 
@@ -49,3 +48,5 @@ export function CartContextProvider({ children }) {
     </CartContext.Provider>
   )
 }
+
+export default CartContextProvider;
